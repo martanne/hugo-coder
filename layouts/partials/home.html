@@ -9,7 +9,7 @@
     <ul>
       {{ range sort . "weight" }}
         <li>
-          <a href="{{ .url }}" aria-label="{{ .name }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} {{ if .target }}target="{{ .target }}"{{ end }} {{ if .type }}type="{{ .type }}"{{ end }}>
+          <a {{ printf "href=%q" .url | safeHTMLAttr }} aria-label="{{ .name }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} {{ if .target }}target="{{ .target }}"{{ end }} {{ if .type }}type="{{ .type }}"{{ end }}>
             {{ if .icon }}
               <i class="{{ .icon }}" aria-hidden="true"></i>
             {{ else }}
