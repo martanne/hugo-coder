@@ -1,0 +1,31 @@
+{{ define "title" }}
+  {{ .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title centered">{{ .Title }}</h1>
+        <h2 class="centered" style="margin:3.2rem 0 1.6rem 0">{{ .Page.Params.Author }}</h2>
+        <h3 class="centered" style="margin:0">
+          <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+            {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
+          </time>
+        </h3>
+      </header>
+
+      <div>
+        {{ .Content }}
+      </div>
+
+      <footer>
+        {{ partial "posts/series.html" . }}
+        {{ partial "posts/disqus.html" . }}
+        {{ partial "posts/commento.html" . }}
+        {{ partial "posts/utteranc.html" . }}
+      </footer>
+    </article>
+
+    {{ partial "posts/math.html" . }}
+  </section>
+{{ end }}
