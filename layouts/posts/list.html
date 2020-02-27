@@ -3,14 +3,20 @@
 {{ end }}
 {{ define "content" }}
   <section class="container list">
-    <h1 class="title">{{ .Title }}</h1>
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">{{ .Title }}</h1>
+        </div>
+      </header>
 
-    <ul>
-      {{- range .Paginator.Pages -}}
-        {{- .Render "li" -}}
-      {{- end -}}
-    </ul>
+      <ul>
+         {{- range .Paginator.Pages -}}
+           {{- .Render "li" -}}
+         {{- end -}}
+      </ul>
 
     {{ partial "pagination.html" . }}
+    </article>
   </section>
 {{ end }}
